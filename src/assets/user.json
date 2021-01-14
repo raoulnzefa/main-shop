@@ -1,0 +1,23 @@
+{
+  "_id": {
+      "$oid": "5fde30d7d6b40510e9fffc18"
+  },
+  "login": "mihazzzold",
+  "passwd": "HByfQMs87",
+  "type": "admin",
+  "name": "Mikhail",
+  "secondname": "Dokuchaev",
+  "email": "m.dokuchaev73@gmail.com",
+  "birthday": "01.11.1995",
+  "phone": "9123620481",
+  "avatar": "",
+  "orders": {
+      "order": {
+          "id": "id",
+          "date": "",
+          "status": "",
+          "price": "",
+          "check": ""
+      }
+  }
+}

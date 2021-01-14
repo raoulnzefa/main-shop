@@ -1,0 +1,86 @@
+a,
+button,
+input,
+textarea {
+	outline: none !important;
+	border: none;
+}
+
+body,
+p,
+span,
+small,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	padding: 0;
+	margin: 0;
+	font-family: $font-1;
+	font-style: normal;
+	font-weight: normal;
+}
+
+.container {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	font-size: 16px;
+	font-family: $font-1;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+}
+
+@media (max-width: 1440px) {
+	html,
+	body {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 1200px) {
+	html,
+	body {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 997px) {
+	html,
+	body {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 768px) {
+	html,
+	body {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 546px) {
+	html,
+	body {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 440px) {
+	html,
+	body {
+		font-size: 16px;
+	}
+}
