@@ -1,6 +1,6 @@
 <template>
 	<div class="user_panel">
-		<div id="favorite" class="item">
+		<div v-if="user" id="favorite" class="item">
 			<svg>
 				<use xlink:href="/sprite.svg#favorite"></use>
 			</svg>
@@ -19,6 +19,15 @@
 </template>
 
 <script>
+import User from '@/components/user.vue'
+
+export default {
+	data () {
+		return {
+			user: User.data.user
+		}
+	}
+}
 
 </script>
 
@@ -33,8 +42,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 2rem;
-	height: 2rem;
+	width: 1.5rem;
+	height: 1.5rem;
 	border-radius: 50%;
 	margin-left: 0.4rem;
 	margin-right: 0.4rem;

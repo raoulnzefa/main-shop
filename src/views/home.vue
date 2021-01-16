@@ -11,6 +11,7 @@
 			<button type="submit">Submit</button>
 		</form>
 		<br>
+		<Popups />
 		<Footer />
 	</div>
 </template>
@@ -18,10 +19,12 @@
 
 <script>
 	import Header from '@/components/header.vue';
+	import Popups from '@/components/popups.vue';
 	import Footer from '@/components/footer.vue';
 	export default {
 		components: {
 			Header,
+			Popups,
 			Footer
 		},
 		data() {

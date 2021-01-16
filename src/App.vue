@@ -4,6 +4,15 @@
   </div>
 </template>
 
-<script></script>
+<script>
+// import Vue from 'vue'
+// new Vue({
+//     methods: {
+//     toggleActive: function() {
+//       this.active = ''
+//     }
+//   }
+// })
+</script>
 
 <style scoped></style>

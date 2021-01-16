@@ -1,10 +1,15 @@
 <template>
 	<div class="user">
 		<div class="user-data">
-			<span class="user-name">Ivan Ivanov</span>
-			<span class="user-status">Admin</span>
+			<span v-if="user" class="user-name">Ivan Ivanov</span>
+			<div v-if="!user" class="user-in">
+				<span class="user-login link">Log in </span>
+				/
+				<span class="user-login link"> Sign up</span>
+			</div>
+			<span v-if="user" class="user-status">Admin</span>
 		</div>
-		<div class="user-avatar">
+		<div v-if="user" class="user-avatar">
 			<svg>
 				<use xlink:href="/sprite.svg#user"></use>
 			</svg>
@@ -13,12 +18,35 @@
 	</div>
 </template>
 
-<script></script>
+<script>
+	export default {
+		data () {
+			return {
+				user: false
+			}
+		}
+	}
+</script>
 
 <style scoped lang="scss">
 	.user {
 		display: flex;
 		align-items: center;
+		&-in {
+			display: flex;
+			align-items: center;
+			font-size: 0.9rem;
+		}
+		&-login {
+			font-weight: 500;
+			margin-bottom: 0;
+			&:last-child {
+				margin-left: 0.5rem;
+			}
+			&:first-child {
+				margin-right: 0.5rem;
+			}
+		}
 		&-data {
 			display: flex;
 			flex-direction: column;

@@ -5,6 +5,10 @@ $color-4: #1565c0;
 $color-5: #0d1a2b;
 
 $shadow-1: 0 0 1rem transparentize($color-4, 0.7);
+$shadow-l-1: 0 0 1rem transparentize($color-1, 0.7);
+$shadow-2: 0 0 0.9rem transparentize($color-3, 0.7);
+$shadow-4: 0 0 0.5rem transparentize($color-3, 0.8);
+$shadow-5: 0 0.05rem 0.4rem transparentize($color-4, 0.8);
 
 $font-1: 'Montserrat Alternates', sans-serif;  // Main font
 
