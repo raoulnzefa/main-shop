@@ -1,6 +1,6 @@
 <template>
 	<div class="user_panel">
-		<div v-if="user" id="favorite" class="item">
+		<div v-if="userData" id="favorite" class="item">
 			<svg>
 				<use xlink:href="@/assets/sprite.svg#favorite"></use>
 			</svg>
@@ -19,15 +19,26 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
 	data () {
 		return {
-			user: true
 		}
+	},
+	computed: {
+		...mapGetters(['userData'])
+	},
+	methods: {
+		...mapActions(['togglePopupStatus', 'getUser']),    
+		onPopupLogin(popup, params) {
+			this.togglePopupStatus({popup, params})
+		}
+	},
+	async mounted() {
+		this.getUser();
 	}
 }
-
 </script>
 
 <style lang="scss" scoped>

@@ -1,8 +1,5 @@
 export default {
   state: {
-    user: {
-      default: null
-    },
     popups: {
       active: false,
       login: {

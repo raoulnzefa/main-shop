@@ -1,38 +1,44 @@
 <template>
 	<div class="user">
 		<div class="user-data">
-			<span  class="user-name"></span>
-			<span class="user-status"></span>
-			<div class="user-in">
+			<span v-if="userData.name" class="user-name">{{userData.name}}</span>
+			<span v-if="userData.username" class="user-status">{{userData.username}}</span>
+			<div v-if="!userData" class="user-in">
 				<span @click="onPopupLogin('login', {colActive: 1})" class="user-login link">Log in </span>
 				/
 				<span @click="onPopupLogin('login', {colActive: 2})" class="user-login link"> Sign up</span>
 			</div>
 		</div>
-		<div class="user-avatar">
+		<div v-if="!userData.avatar" class="user-avatar">
 			<svg>
 				<use xlink:href="@/assets/sprite.svg#user"></use>
 			</svg>
-			<img >
+			<img v-if="userData.avatar">
 		</div>
 	</div>
 </template>
 
 <script>
-	import {mapActions} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 
-	export default {
-		data () {
-			return {
-			}
-		},
-		methods: {
-			...mapActions(['togglePopupStatus']),    
-			onPopupLogin(popup, params) {
-				this.togglePopupStatus({popup, params})
-			}
+export default {
+	data () {
+		return {
 		}
+	},
+	computed: {
+		...mapGetters(['userData'])
+	},
+	methods: {
+		...mapActions(['togglePopupStatus', 'getUser']),    
+		onPopupLogin(popup, params) {
+			this.togglePopupStatus({popup, params})
+		}
+	},
+	async mounted() {
+		this.getUser();
 	}
+}
 </script>
 
 <style scoped lang="scss">
@@ -86,7 +92,7 @@
 			width: 3rem;
 			height: 3rem;
 			margin-left: 1rem;
-			background-color: $color-1;
+			// background-color: $color-1;
 			cursor: pointer;
 			& img {
 				// display: none;
