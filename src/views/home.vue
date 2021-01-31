@@ -1,6 +1,6 @@
 <template>
 	<div id="main">
-		<Header />
+		<Header/>
 		<router-link to="/cart">CART</router-link>
 		<br>
 		<form v-on:submit.prevent="addToApi">
@@ -11,7 +11,7 @@
 			<button type="submit">Submit</button>
 		</form>
 		<br>
-		<Popups />
+		<Popups/>
 		<Footer />
 	</div>
 </template>
@@ -29,29 +29,11 @@
 		},
 		data() {
 			return {
-				msg: 'Welcome to Your Vue.js App',
 				User: {
-					name: '',
-					secondname: ''
-				}
+				},
 			}
 		},
 		methods: {
-			addToApi() {
-				let newUser = {
-					name: this.User.name,
-					secondname: this.User.secondname,
-				};
-				console.log(newUser);
-
-				fetch('http://localhost:27017/users')
-					.then(response => response.text())
-					.then((result) => {
-						console.log('result: ' + result);
-						// document.body.textContent = result
-					})
-					
-			}
 		}
 	}
 </script>

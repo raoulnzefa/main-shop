@@ -1,28 +1,35 @@
 <template>
 	<div class="user">
 		<div class="user-data">
-			<span v-if="user" class="user-name">Ivan Ivanov</span>
-			<div v-if="!user" class="user-in">
-				<span class="user-login link">Log in </span>
+			<span  class="user-name"></span>
+			<span class="user-status"></span>
+			<div class="user-in">
+				<span @click="onPopupLogin('login', {colActive: 1})" class="user-login link">Log in </span>
 				/
-				<span class="user-login link"> Sign up</span>
+				<span @click="onPopupLogin('login', {colActive: 2})" class="user-login link"> Sign up</span>
 			</div>
-			<span v-if="user" class="user-status">Admin</span>
 		</div>
-		<div v-if="user" class="user-avatar">
+		<div class="user-avatar">
 			<svg>
-				<use xlink:href="/sprite.svg#user"></use>
+				<use xlink:href="@/assets/sprite.svg#user"></use>
 			</svg>
-			<img src="" >
+			<img >
 		</div>
 	</div>
 </template>
 
 <script>
+	import {mapActions} from 'vuex'
+
 	export default {
 		data () {
 			return {
-				user: false
+			}
+		},
+		methods: {
+			...mapActions(['togglePopupStatus']),    
+			onPopupLogin(popup, params) {
+				this.togglePopupStatus({popup, params})
 			}
 		}
 	}
@@ -82,7 +89,7 @@
 			background-color: $color-1;
 			cursor: pointer;
 			& img {
-				display: none;
+				// display: none;
 				min-width: 100%;
 				height: 100%;
 			}

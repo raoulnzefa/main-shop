@@ -1,6 +1,6 @@
 <template>
-  <div class="login-wrap" id="login_wrap">
-    <div class="login-col" v-bind:class="{active: colActive == 1}">
+  <div class="login-wrap popup" id="login_wrap" transition="popup" v-if="allPopup.login.active">
+    <div class="login-col" v-bind:class="{active: allPopup.login.params.colActive == 1}">
       <div class="login-col-wrap active">
         <h3 class="title-sec login-title">Sign in</h3>
         <form class="login-form__login" id="login">
@@ -11,7 +11,7 @@
         </form>
       </div>
     </div>
-    <div class="login-col" v-bind:class="{active: colActive == 2}">
+    <div class="login-col" v-bind:class="{active: allPopup.login.params.colActive == 2}">
       <div class="login-col-wrap active">
         <h3 class="title-sec login-title">Sign up</h3>
         <form class="login-form__login" id="signup">
@@ -22,28 +22,40 @@
         </form>
       </div>
       <div class="login-col-wrap login-col-wrap__hero">
-        <div class="login-col__col" v-bind:class="{show: colActive == 2, hide: colActive == 1}">
+        <div class="login-col__col" v-bind:class="{show: allPopup.login.params.colActive == 2, hide: allPopup.login.params.colActive == 1}">
           <h3 class="title-sec login-title">Hello, Friend!</h3>
           <span class="text login-text">Enter your personal details and start journey with us</span>
-          <span v-on:click="colActive = 1" class="btn light rounded">Log in</span>
+          <span @click="allPopup.login.params.colActive = 1" class="btn light rounded">Log in</span>
         </div>
 
-        <div class="login-col__col" v-bind:class="{show: colActive == 1, hide: colActive == 2}">
+        <div class="login-col__col" v-bind:class="{show: allPopup.login.params.colActive == 1, hide: allPopup.login.params.colActive == 2}">
           <h3 class="title-sec login-title">Welcome Back!</h3>
           <span class="text login-text">To keep connected with us please login with your personal info</span>
-          <span v-on:click="colActive = 2" class="btn light rounded">Sign up</span>
+          <span @click="allPopup.login.params.colActive = 2" class="btn light rounded">Sign up</span>
         </div>
       </div>
     </div>
+    <div class="close" @click="closePopup('login')" v-bind:class="{active: allPopup.login.params.colActive == 2}"><span></span><span></span><span></span></div>
   </div>
 </template>  
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
+
 export default{
   data() {
-    return {
-      colActive: 1
+    return {}
+  },
+  computed: {
+    ...mapGetters(['allPopup']),
+  },
+  methods: {
+    ...mapActions(['togglePopupStatus']),
+    closePopup(popup) {
+      this.togglePopupStatus({popup});
     }
+  },
+  mounted() {
   }
 }
 </script>
@@ -51,13 +63,14 @@ export default{
 <style lang="scss" scoped>
 .login { 
   &-wrap {
-  display: flex;
-  justify-content: space-between;
-  width: 700px;
-  height: 500px;
-  background: $color-1;
-  box-shadow: $shadow-1;
-  overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    height: 500px;
+    background: $color-1;
+    box-shadow: $shadow-1;
+    overflow: hidden;
   }  
   &-col {
     padding: 2rem;
@@ -152,5 +165,31 @@ export default{
   padding: 0 !important;
   margin: 0 !important;
   z-index: -99;
+}
+.close {
+  position: absolute;
+  right: 0.8rem;
+  top: 0.8rem;
+  background-color: $color-1;
+  z-index: 9;
+  &::before, &::after, & span:nth-child(1), & span:nth-child(2) {
+    background-color: $color-4;
+  }
+  &:hover {
+    & span:nth-child(3) {
+      box-shadow: 0 0 0.3rem $color-1;
+    }
+  }
+  &.active {
+    background-color: $color-4;
+    &::before, &::after, & span:nth-child(1), & span:nth-child(2) {
+      background-color: $color-1;
+    }
+    &:hover {
+      & span:nth-child(3) {
+        box-shadow: 0 0 0.3rem $color-4;
+      }
+    }
+  }
 }
 </style>

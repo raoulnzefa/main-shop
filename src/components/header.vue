@@ -14,14 +14,16 @@
 
 <script>
 import Logo from '@/components/logo.vue'
-import User from '@/components/user.vue'
-import User_panel from '@/components/user_panel.vue'
+import User from '@/components/user/user.vue'
+import User_panel from '@/components/user/user_panel.vue'
 
 export default {
 	components: {
 		Logo,
 		User,
 		User_panel
+	},
+	methods: {
 	}
 }
 

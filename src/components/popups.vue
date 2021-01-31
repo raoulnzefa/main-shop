@@ -1,15 +1,33 @@
 <template>
-  <div class="popup-wrap">
-    <LoginForm/>
-  </div>
+    <div class="popup-wrap"  transition="popupWrap" v-if="allPopup.active" @click="closeAllPopups($event, 'all')">
+        <transition name="popup-anim" mode="out-in" duration="1000" appear>
+        <LoginForm />
+      </transition>
+    </div>
 </template>
 
 <script>
   import LoginForm from '@/components/loginForm.vue'
+  import {mapGetters, mapActions} from 'vuex'
 
   export default {
+    name: 'modal',
+    data() {
+      return {}
+    },
     components: {
       LoginForm
+    },
+    computed: {
+      ...mapGetters(['allPopup', 'getCurentPopup']),
+    },
+    methods: {
+      ...mapActions(['togglePopupStatus']),    
+      closeAllPopups(event, popup) {
+        if (!event.target.closest('.popup')) {
+          this.togglePopupStatus({popup});
+        }
+      }
     }
   }
 </script>
@@ -26,7 +44,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 999;
     backdrop-filter: blur(2.5px);
+    &.active {
+    }
+  }
+  .popup-anim-enter {
+    opacity: 0;
+  }
+  .popup-anim-enter-active {
+    opacity: 1;
+  }
+
+  .popup {
+    // display: none;
   }
 </style>

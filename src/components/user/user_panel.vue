@@ -2,29 +2,28 @@
 	<div class="user_panel">
 		<div v-if="user" id="favorite" class="item">
 			<svg>
-				<use xlink:href="/sprite.svg#favorite"></use>
+				<use xlink:href="@/assets/sprite.svg#favorite"></use>
 			</svg>
 		</div>
 		<div id="view" class="item">
 			<svg>
-				<use xlink:href="/sprite.svg#eye"></use>
+				<use xlink:href="@/assets/sprite.svg#eye"></use>
 			</svg>
 		</div>
 		<div id="cart" class="item">
 			<svg>
-				<use xlink:href="/sprite.svg#cart"></use>
+				<use xlink:href="@/assets/sprite.svg#cart"></use>
 			</svg>
 		</div>
 	</div>
 </template>
 
 <script>
-import User from '@/components/user.vue'
 
 export default {
 	data () {
 		return {
-			user: User.data.user
+			user: true
 		}
 	}
 }

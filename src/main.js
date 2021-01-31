@@ -3,20 +3,17 @@ import "@/styles/_main.scss";
 
 import Vue from 'vue'
 import App from './App.vue'
+import store from './store/store.js'
 
 import router from './router'
 
 Vue.config.productionTip = false
 
 new Vue({
-	router,
+  store,
+  router,
   render: h => h(App),
-  data: {
-    elem: '',
-    classToggle: ''
-  }
-}
-).$mount('#app')
+}).$mount('#app')
 
 
 
