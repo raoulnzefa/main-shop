@@ -1,42 +1,44 @@
 <template>
-  <div class="login-wrap popup" id="login_wrap" transition="popup" v-if="allPopup.login.active">
-    <div class="login-col" v-bind:class="{active: allPopup.login.params.colActive == 1}">
-      <div class="login-col-wrap active">
-        <h3 class="title-sec login-title">Sign in</h3>
-        <form class="login-form__login" id="login">
-          <input type="text" class="input login-input" name="login" placeholder="E-Mail / Login / Phone">
-          <input type="password" class="input login-input" name="password" placeholder="Password">
-          <span class="link login-forgot">Forgot your password?</span>
-          <button type="submit" class="btn login-btn">Log in</button>
-        </form>
-      </div>
-    </div>
-    <div class="login-col" v-bind:class="{active: allPopup.login.params.colActive == 2}">
-      <div class="login-col-wrap active">
-        <h3 class="title-sec login-title">Sign up</h3>
-        <form class="login-form__login" id="signup">
-          <input type="text" class="input login-input" name="name" placeholder="Name">
-          <input type="text" class="input login-input" name="login" placeholder="E-Mail / Phone">
-          <input type="password" class="input login-input" name="password" placeholder="Password">
-          <button type="submit" class="btn login-btn">Sign up</button>
-        </form>
-      </div>
-      <div class="login-col-wrap login-col-wrap__hero">
-        <div class="login-col__col" v-bind:class="{show: allPopup.login.params.colActive == 2, hide: allPopup.login.params.colActive == 1}">
-          <h3 class="title-sec login-title">Hello, Friend!</h3>
-          <span class="text login-text">Enter your personal details and start journey with us</span>
-          <span @click="allPopup.login.params.colActive = 1" class="btn light rounded">Log in</span>
+  <transition name="fade" mode="out-in" appear>
+    <div class="login-wrap popup" id="login_wrap" v-if="allPopup.login.active">
+      <div class="login-col" v-bind:class="{active: allPopup.login.params.colActive == 1}">
+        <div class="login-col-wrap active">
+          <h3 class="title-sec login-title">Sign in</h3>
+          <form class="login-form__login" id="login">
+            <input type="text" class="input login-input" name="login" placeholder="E-Mail / Login / Phone">
+            <input type="password" class="input login-input" name="password" placeholder="Password">
+            <span class="link login-forgot">Forgot your password?</span>
+            <button type="submit" class="btn login-btn">Log in</button>
+          </form>
         </div>
+      </div>
+      <div class="login-col" v-bind:class="{active: allPopup.login.params.colActive == 2}">
+        <div class="login-col-wrap active">
+          <h3 class="title-sec login-title">Sign up</h3>
+          <form class="login-form__login" id="signup">
+            <input type="text" class="input login-input" name="name" placeholder="Name">
+            <input type="text" class="input login-input" name="login" placeholder="E-Mail / Phone">
+            <input type="password" class="input login-input" name="password" placeholder="Password">
+            <button type="submit" class="btn login-btn">Sign up</button>
+          </form>
+        </div>
+        <div class="login-col-wrap login-col-wrap__hero">
+          <div class="login-col__col" v-bind:class="{show: allPopup.login.params.colActive == 2, hide: allPopup.login.params.colActive == 1}">
+            <h3 class="title-sec login-title">Hello, Friend!</h3>
+            <span class="text login-text">Enter your personal details and start journey with us</span>
+            <span @click="allPopup.login.params.colActive = 1" class="btn light rounded">Log in</span>
+          </div>
 
-        <div class="login-col__col" v-bind:class="{show: allPopup.login.params.colActive == 1, hide: allPopup.login.params.colActive == 2}">
-          <h3 class="title-sec login-title">Welcome Back!</h3>
-          <span class="text login-text">To keep connected with us please login with your personal info</span>
-          <span @click="allPopup.login.params.colActive = 2" class="btn light rounded">Sign up</span>
+          <div class="login-col__col" v-bind:class="{show: allPopup.login.params.colActive == 1, hide: allPopup.login.params.colActive == 2}">
+            <h3 class="title-sec login-title">Welcome Back!</h3>
+            <span class="text login-text">To keep connected with us please login with your personal info</span>
+            <span @click="allPopup.login.params.colActive = 2" class="btn light rounded">Sign up</span>
+          </div>
         </div>
       </div>
+      <div class="close" @click="closePopup('login')" v-bind:class="{active: allPopup.login.params.colActive == 2}"><span></span><span></span><span></span></div>
     </div>
-    <div class="close" @click="closePopup('login')" v-bind:class="{active: allPopup.login.params.colActive == 2}"><span></span><span></span><span></span></div>
-  </div>
+  </transition>
 </template>  
 
 <script>
@@ -191,5 +193,11 @@ export default{
       }
     }
   }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -30,14 +30,11 @@ export default {
 		...mapGetters(['userData'])
 	},
 	methods: {
-		...mapActions(['togglePopupStatus', 'getUser']),    
+		...mapActions(['togglePopupStatus']),    
 		onPopupLogin(popup, params) {
 			this.togglePopupStatus({popup, params})
 		}
 	},
-	async mounted() {
-		this.getUser();
-	}
 }
 </script>
 

@@ -16,6 +16,8 @@
 import Logo from '@/components/logo.vue'
 import User from '@/components/user/user.vue'
 import User_panel from '@/components/user/user_panel.vue'
+import {mapGetters, mapActions} from 'vuex'
+
 
 export default {
 	components: {
@@ -23,7 +25,14 @@ export default {
 		User,
 		User_panel
 	},
+	computed: {
+		...mapGetters(['userData'])
+	},
 	methods: {
+		...mapActions(['getUser']),    
+	},
+	async mounted() {
+		this.getUser();
 	}
 }
 

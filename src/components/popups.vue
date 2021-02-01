@@ -1,9 +1,9 @@
 <template>
-    <div class="popup-wrap"  transition="popupWrap" v-if="allPopup.active" @click="closeAllPopups($event, 'all')">
-        <transition name="popup-anim" mode="out-in" duration="1000" appear>
-        <LoginForm />
-      </transition>
+  <transition name="fade" mode="out-in" appear>
+    <div class="popup-wrap" v-if="allPopup.active" @click="closeAllPopups($event, 'all')">
+      <LoginForm />
     </div>
+  </transition>
 </template>
 
 <script>
@@ -45,17 +45,11 @@
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(2.5px);
-    &.active {
-    }
   }
-  .popup-anim-enter {
-    opacity: 0;
-  }
-  .popup-anim-enter-active {
-    opacity: 1;
-  }
-
-  .popup {
-    // display: none;
-  }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>

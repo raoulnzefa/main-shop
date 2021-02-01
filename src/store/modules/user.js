@@ -5,10 +5,14 @@ export default {
     },
   },
   actions: {
-    async getUser(ctx, id = 1) {
-      const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id);
-      const user = await res.json();
-      ctx.commit('updateUser', user);
+    async getUser(ctx, id = undefined) {
+      if (id !== undefined) {
+        const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id);
+        const user = await res.json();
+        ctx.commit('updateUser', user);
+      } else {
+        ctx.commit('updateUser', false);
+      }
     }
   },
   mutations: {
