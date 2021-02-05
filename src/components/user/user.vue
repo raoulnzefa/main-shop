@@ -4,9 +4,9 @@
 			<span v-if="userData.name" class="user-name">{{userData.name}}</span>
 			<span v-if="userData.username" class="user-status">{{userData.username}}</span>
 			<div v-if="!userData" class="user-in">
-				<span @click="onPopupLogin('login', {colActive: 1})" class="user-login link">Log in </span>
+				<span @click="onPopupLogin('login', {colActive: 1,}, true)" class="user-login link">Log in </span>
 				/
-				<span @click="onPopupLogin('login', {colActive: 2})" class="user-login link"> Sign up</span>
+				<span @click="onPopupLogin('login', {colActive: 2,}, true)" class="user-login link"> Sign up</span>
 			</div>
 		</div>
 		<div v-if="!userData.avatar" class="user-avatar">
@@ -31,8 +31,8 @@ export default {
 	},
 	methods: {
 		...mapActions(['togglePopupStatus']),    
-		onPopupLogin(popup, params) {
-			this.togglePopupStatus({popup, params})
+		onPopupLogin(popup, params, status) {
+			this.togglePopupStatus({popup, params, status})
 		}
 	},
 }

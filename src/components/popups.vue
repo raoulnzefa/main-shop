@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" mode="out-in" appear>
-    <div class="popup-wrap" v-if="allPopup.active" @click="closeAllPopups($event, 'all')">
+    <div class="popup-wrap" v-if="allPopup.active" @click="closeAllPopups($event, 'all', false)">
       <LoginForm />
     </div>
   </transition>
@@ -23,9 +23,9 @@
     },
     methods: {
       ...mapActions(['togglePopupStatus']),    
-      closeAllPopups(event, popup) {
+      closeAllPopups(event, popup, status) {
         if (!event.target.closest('.popup')) {
-          this.togglePopupStatus({popup});
+          this.togglePopupStatus({popup, status});
         }
       }
     }

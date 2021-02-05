@@ -1,11 +1,14 @@
 <template>
 	<header class="header">
-		<div class="container">
-			<div class="header-wrap">
+		<HeaderTop />
+		<div class="header-body">
+			<div class="container">
+				<div class="header-wrap">
 				<Logo/>
-				<div class="header-right">
-					<User/>
-					<User_panel/>
+					<div class="header-right">
+						<User/>
+						<UserPanel/>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -13,17 +16,19 @@
 </template>
 
 <script>
+import HeaderTop from '@/components/headerTop.vue'
 import Logo from '@/components/logo.vue'
 import User from '@/components/user/user.vue'
-import User_panel from '@/components/user/user_panel.vue'
+import UserPanel from '@/components/user/userPanel.vue'
 import {mapGetters, mapActions} from 'vuex'
 
 
 export default {
 	components: {
+		HeaderTop,
 		Logo,
 		User,
-		User_panel
+		UserPanel
 	},
 	computed: {
 		...mapGetters(['userData'])
@@ -40,8 +45,13 @@ export default {
 
 <style scoped lang="scss">
 .header {
-	padding: 1rem 0;
 	box-shadow: $shadow-1;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	&-body {
+		padding: 1rem 0;
+	}
 
 	&-wrap {
 		display: flex;
@@ -53,12 +63,6 @@ export default {
 	}
 	& .user_panel {
 		margin-left: 1rem;
-	}
-
-	& .container {
-		max-width: 100%;
-		padding-left: 4rem;
-		padding-right: 4rem;
 	}
 }
 </style>

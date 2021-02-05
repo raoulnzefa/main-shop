@@ -27,6 +27,8 @@ h6 {
 	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 * {
@@ -79,6 +81,12 @@ body {
 			color: $color-2;
 		}
 	}
+}
+.title {
+	display: block;
+	font-size: 2.1rem;
+	font-weight: 500;
+	font-family: $font-1;
 }
 
 .title-sec {

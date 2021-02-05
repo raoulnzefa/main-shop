@@ -14,8 +14,11 @@ export default new Router({
 			path: '/cart',
 			component: () => import('./views/cart.vue')
 		}, {
+			path: '/delivery',
+			component: () => import('./views/textPage.vue')
+		}, {
 			path: '*',
-			component: () => import('./views/not_found.vue')
+			component: () => import('./views/notFound.vue')
 		}
 	]
 })

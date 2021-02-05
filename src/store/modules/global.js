@@ -11,22 +11,21 @@ export default {
     }
   },
   actions: {
-    togglePopupStatus(ctx, {popup, params = null}) {
-      ctx.commit('changePopupStatus', {popup, params})
+    togglePopupStatus(ctx, {popup, params = null, status}) {
+      ctx.commit('changePopupStatus', {popup, params, status})
     } 
   },
   mutations: {
-    changePopupStatus: (state, {popup, params}) => {
-      console.log(state.popups.login.params.colActive);
+    changePopupStatus: (state, {popup, params, status}) => {
       if (popup in state.popups) {
         if (params != null) {
           state.popups[popup].params = params;
         }
-        state.popups.active = !state.popups.active;
-        state.popups[popup].active = !state.popups[popup].active;
+        state.popups.active = status;
+        state.popups[popup].active = status;
       } else if (popup == 'all') {
-        state.popups.active = !state.popups.active;
-        state.popups.login.active = !state.popups.login.active;
+        state.popups.active = status;
+        state.popups.login.active = status;
       } else {
         console.log('Такого пупапа нет');
       }

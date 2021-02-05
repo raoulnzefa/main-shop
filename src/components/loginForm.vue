@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="close" @click="closePopup('login')" v-bind:class="{active: allPopup.login.params.colActive == 2}"><span></span><span></span><span></span></div>
+      <div class="close" @click="closePopup('login', false)" v-bind:class="{active: allPopup.login.params.colActive == 2}"><span></span><span></span><span></span></div>
     </div>
   </transition>
 </template>  
@@ -53,8 +53,8 @@ export default{
   },
   methods: {
     ...mapActions(['togglePopupStatus']),
-    closePopup(popup) {
-      this.togglePopupStatus({popup});
+    closePopup(popup, status) {
+      this.togglePopupStatus({popup, status});
     }
   },
   mounted() {
